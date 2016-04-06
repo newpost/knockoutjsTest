@@ -1,0 +1,21 @@
+﻿<html>
+	<head>
+        <title>test</title>
+        <meta charset="utf-8" />
+		<script src="knockout-3.4.0.js" type="text/javascript"></script>
+        
+	</head>
+	<body>
+        <span style="color:blue;font-weight:700;" data-bind="text:firstName"></span>
+        <span style="color:black;" data-bind="text:lastName"></span>
+        <label>姓:</label><input type="text" />
+        <label>名:</label><input type="text" />
+        <script type="text/javascript">
+            var viewModel = {
+                firstName: ko.observable("zhang"),
+                lastName: ko.observable("shi")
+            }
+            ko.applyBindings(viewModel);
+        </script>
+	</body>
+</html>

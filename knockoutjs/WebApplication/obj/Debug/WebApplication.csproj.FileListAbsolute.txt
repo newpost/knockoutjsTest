@@ -1,0 +1,5 @@
+E:\testcode\knockoutjsTest\knockoutjs\WebApplication\bin\WebApplication.dll
+E:\testcode\knockoutjsTest\knockoutjs\WebApplication\bin\WebApplication.pdb
+E:\testcode\knockoutjsTest\knockoutjs\WebApplication\obj\Debug\WebApplication.csprojResolveAssemblyReference.cache
+E:\testcode\knockoutjsTest\knockoutjs\WebApplication\obj\Debug\WebApplication.dll
+E:\testcode\knockoutjsTest\knockoutjs\WebApplication\obj\Debug\WebApplication.pdb
