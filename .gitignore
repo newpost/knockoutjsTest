@@ -250,3 +250,8 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+knockoutjs/WebApplication/obj/Debug/WebApplication.pdb
+knockoutjs/WebApplication/bin/WebApplication.dll
+knockoutjs/WebApplication/bin/WebApplication.pdb
+knockoutjs/WebApplication/obj/Debug/WebApplication.pdb
+knockoutjs/WebApplication/obj/Debug/WebApplication.dll
