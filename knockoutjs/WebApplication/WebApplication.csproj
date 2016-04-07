@@ -60,6 +60,8 @@
     <Content Include="checkbox.html" />
     <Content Include="demo.html" />
     <Content Include="HtmlPage1.html" />
+    <Content Include="jquery-1.7.1.js" />
+    <Content Include="jquery-1.7.1.min.js" />
     <Content Include="knockout-3.4.0.js" />
     <Content Include="Web.config" />
     <Content Include="checkbox1.html" />
