@@ -23,7 +23,7 @@
 
                 // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
                 function AppViewModel() {
-                    var self = this;
+                    var self = this;//这里的this指针要保留下来.
                     self.peoples = [{ firstName: "zhang", lastName: "shi" }, { firstName: "zhang", lastName: "shi" }, { firstName: "zhang", lastName: "shi" }, { firstName: "zhang", lastName: "shi" }];
                     self.po = ko.computed(function () {
                         return ko.utils.arrayMap(self["peoples"], function (item) {
