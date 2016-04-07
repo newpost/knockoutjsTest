@@ -59,6 +59,7 @@
   <ItemGroup>
     <Content Include="checkbox.html" />
     <Content Include="demo.html" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="knockout-3.4.0.js" />
     <Content Include="Web.config" />
     <Content Include="checkbox1.html" />
