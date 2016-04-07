@@ -57,9 +57,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="checkbox.html" />
     <Content Include="demo.html" />
     <Content Include="knockout-3.4.0.js" />
     <Content Include="Web.config" />
+    <Content Include="checkbox1.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
