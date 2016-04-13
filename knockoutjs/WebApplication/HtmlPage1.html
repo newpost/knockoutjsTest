@@ -1,0 +1,40 @@
+﻿
+<!DOCTYPE html>
+<head>
+    <script src="jquery-1.7.1.min.js"></script>   
+    <script type='text/javascript' src='http://learn.knockoutjs.com/Scripts/Lib/knockout-3.0.0.js'></script>
+    <link rel="Stylesheet" href="http://learn.knockoutjs.com/Content/App/coderunner.css" />
+    
+</head>
+<html>
+    <body class="codeRunner">
+        <!-- This is a *view* - HTML markup that defines the appearance of your UI -->
+<div data-bind="foreach: po">
+<p>First name: <input data-bind="value: firstName" /></p>
+<p>Last name: <input data-bind="value: lastName" /></p>
+</div>
+        <script type='text/javascript'>
+            (function () { // Wrap in function to prevent accidental globals
+                if (location.protocol != "data:") {
+                    $(window).bind('hashchange', function () {
+                        window.parent.handleChildIframeUrlChange(location.hash)
+                    });
+                }
+
+                // This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
+                function AppViewModel() {
+                    var self = this;//这里的this指针要保留下来.
+                    self.peoples = [{ firstName: "zhang", lastName: "shi" }, { firstName: "zhang", lastName: "shi" }, { firstName: "zhang", lastName: "shi" }, { firstName: "zhang", lastName: "shi" }];
+                    self.po = ko.computed(function () {
+                        return ko.utils.arrayMap(self["peoples"], function (item) {
+                            return { lastName: item.lastName.substr(0, 1), firstName: item.firstName.substr(0, 1) };
+                        });
+                    });
+                }
+
+                // Activates knockout.js
+                ko.applyBindings(new AppViewModel());
+            })();
+        </script>
+    </body>
+</html>
