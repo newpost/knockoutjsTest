@@ -63,6 +63,7 @@
     <Content Include="HtmlPage2.html" />
     <None Include="Scripts\jquery-2.2.2.intellisense.js" />
     <Content Include="HtmlPage3.html" />
+    <Content Include="HtmlPage4.html" />
     <Content Include="Scripts\jquery-2.2.2.js" />
     <Content Include="Scripts\jquery-2.2.2.min.js" />
     <Content Include="Scripts\knockout-3.4.0.debug.js" />

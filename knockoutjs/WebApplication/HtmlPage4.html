@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="Scripts/knockout-3.4.0.debug.js"></script>
+</head>
+<body>
+    <div data-bind="with: info1" id="main">
+        <span data-bind="text: nickname"></span>
+        <div data-bind="with:$root.info2">
+            <span data-bind="text: age"></span>
+        </div>
+    </div>
+    <script>
+        var pagevm = {
+            info1: {
+                nickname: "zhangshi"
+                
+            },
+            info2: {
+                age:12
+            }
+        };
+        ko.applyBindings(pagevm, document.getElementById("main"))
+    </script>
+</body>
+</html>
