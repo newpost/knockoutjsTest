@@ -60,9 +60,13 @@
     <Content Include="checkbox.html" />
     <Content Include="demo.html" />
     <Content Include="HtmlPage1.html" />
-    <Content Include="jquery-1.7.1.js" />
-    <Content Include="jquery-1.7.1.min.js" />
-    <Content Include="knockout-3.4.0.js" />
+    <Content Include="HtmlPage2.html" />
+    <None Include="Scripts\jquery-2.2.2.intellisense.js" />
+    <Content Include="HtmlPage3.html" />
+    <Content Include="Scripts\jquery-2.2.2.js" />
+    <Content Include="Scripts\jquery-2.2.2.min.js" />
+    <Content Include="Scripts\knockout-3.4.0.debug.js" />
+    <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="Web.config" />
     <Content Include="checkbox1.html" />
   </ItemGroup>
@@ -70,6 +74,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Scripts\jquery-2.2.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
