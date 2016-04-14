@@ -6,23 +6,110 @@
     <script src="Scripts/knockout-3.4.0.debug.js"></script>
 </head>
 <body>
-    <div data-bind="with: info1" id="main">
+    <div data-bind="with:$root.info1" id="main">
         <span data-bind="text: nickname"></span>
-        <div data-bind="with:$root.info2">
+        <div data-bind="with: $root.info2">
             <span data-bind="text: age"></span>
+        </div>
+    </div>
+    <div id="main2">
+        <div class="job" style="margin-top: 10px">
+            <h4 style="color: #F4835A">基本信息</h4>
+            <div style="border-bottom: solid 2px #F6F6F6; padding-top: 5px; width: 100%"></div>
+            <table style="width: 100%" id="table1">
+                <tbody data-bind="with: DetailUserInfo">
+                    <tr>
+                        <td rowspan="4">
+                            <img />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>姓名：<span data-bind="text: NICKNAME"></span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 45%">性别：<span data-bind="text: SEX"></span></td>
+                        <td style="width: 45%">手机号：<span data-bind="text: CELLPHONE"></span></td>
+                    </tr>
+                    <tr>
+                        <td>年龄：<span data-bind="text: BIRTH_DATE"></span></td>
+                        <td>邮箱：<span data-bind="text: MAIL"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="pagecontent" data-bind="if: DetailUserResume">
+            <div class="job" style="margin-top: 10px">
+                <h4 style="color: #F4835A">简历信息</h4>
+                <div style="border-bottom: solid 2px #F6F6F6; padding-top: 5px; width: 100%"></div>
+                <table style="width: 100%">
+
+
+                    <tr>
+                        <td style="width: 50%">工作年限：<span>5年</span></td>
+                        <td style="width: 50%">最高 学历：<span>专科</span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%">任职岗位：<span>厨师长</span></td>
+                        <td style="width: 50%">任职行业：<span>日料</span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="job" style="margin-top: 10px">
+                <h4 style="color: #F4835A">其他技能描述</h4>
+                <div style="border-bottom: solid 2px #F6F6F6; padding-top: 5px; width: 100%"></div>
+                <h4>管理   菜品监督   新菜设计   后厨卫生与安全    好学    团结</h4>
+            </div>
+            <div class="job" style="margin-top: 10px">
+                <h4 style="color: #F4835A">期望职位</h4>
+                <div style="border-bottom: solid 2px #F6F6F6; padding-top: 5px; width: 100%"></div>
+                <h4>厨师长</h4>
+            </div>
+
+            <div class="job" style="margin-top: 10px">
+                <h4 style="color: #F4835A">期望待遇 </h4>
+                <div style="border-bottom: solid 2px #F6F6F6; padding-top: 5px; width: 100%"></div>
+                <sapn data-bind="text:POSITION_TREATMENT"></sapn>
+            </div>
+        </div>
+        <div class="job" style="margin-top: 10px">
+            <h4 style="color: #F4835A">魅力风采 </h4>
+            <div style="border-bottom: solid 2px #F6F6F6; padding-top: 5px; width: 100%"></div>
+            <table data-bind="with: DetailUserrAlbum">
+                <tr>
+                    <td>
+                        <img data-bind="attr: { src: IMG1 }" /></td>
+                    <td>
+                        <img data-bind="attr: { src: IMG2 }" /></td>
+                    <td>
+                        <img data-bind="attr: { src: IMG3 }" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <img data-bind="attr: { src: IMG4 }" /></td>
+                    <td>
+                        <img data-bind="attr: { src: IMG5 }" /></td>
+                    <td>
+                        <img data-bind="attr: { src: IMG6 }" /></td>
+                </tr>
+
+            </table>
         </div>
     </div>
     <script>
         var pagevm = {
             info1: {
                 nickname: "zhangshi"
-                
+
             },
             info2: {
-                age:12
+                age: 12
             }
         };
         ko.applyBindings(pagevm, document.getElementById("main"))
+
+        var pvmStr = '{"DetailUserInfo":{"NICKNAME":"餐聘君","SEX":"男","CELLPHONE":"13811441407","MAIL":"463358138@qq.com","BIRTH_DATE":1},"DetailUserrAlbum":{"IMG0":{"ID":"ZZ1l3f    ","ORG_ID":"zXvH1","USER_ID":"rDEk0","FILE_ID":"FsFZc4belT","DISP_NO":0,"NAME":null,"REMARK":null,"CREATE_DATE":"/Date(1453867132000)/","UPDATE_DATE":null,"SERVER_FULL_PATH":"http://www.pic.g2b2b.com/CanPin/UserPicture/FsFZc4belT.jpg"},"IMG1":{"ID":"RjQbkY    ","ORG_ID":"zXvH1","USER_ID":"rDEk0","FILE_ID":"HnhjPy7AfB","DISP_NO":1,"NAME":null,"REMARK":null,"CREATE_DATE":"/Date(1455672915000)/","UPDATE_DATE":null,"SERVER_FULL_PATH":"http://www.pic.g2b2b.com/CanPin/UserPicture/HnhjPy7AfB.jpg"},"IMG2":null,"IMG3":{"ID":"2grups    ","ORG_ID":"zXvH1","USER_ID":"rDEk0","FILE_ID":"1Q4ChtlwlU","DISP_NO":3,"NAME":null,"REMARK":null,"CREATE_DATE":"/Date(1453867447000)/","UPDATE_DATE":null,"SERVER_FULL_PATH":"http://www.pic.g2b2b.com/CanPin/UserPicture/1Q4ChtlwlU.jpg"},"IMG4":null,"IMG5":null,"IMG6":null}}';
+        var vm = JSON.parse(pvmStr);
+        ko.applyBindings(vm, document.getElementById("main2"));
     </script>
 </body>
 </html>
