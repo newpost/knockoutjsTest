@@ -257,3 +257,4 @@ knockoutjs/WebApplication/obj/Debug/WebApplication.pdb
 knockoutjs/WebApplication/obj/Debug/WebApplication.dll
 knockoutjs/WebApplication/obj/Debug/WebApplication.pdb
 knockoutjs/WebApplication/bin/WebApplication.pdb
+*.suo
