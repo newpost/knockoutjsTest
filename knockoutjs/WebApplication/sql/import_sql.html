@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生成入库sql</title>
+    <script src="jquery-2.0.0.js"></script>
+    <script>
+        function makeStr(len) {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for (var i = 0; i < len; i++)
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            return text;
+        }
+        var result = [];
+        $(function(){
+
+
+            $("#btn1").on("click",function(){
+                var qType = $("#q_type").val();
+                var qindType = $("#q_ind_type").val();
+                var qScore = $("#q_score").val();
+
+                var regex1 = /\n[\s0-9]+[\.．、：]/igm;
+                var regex2 = /\n[\sA-Z]+[\.．：、]/gm;
+                var regex3 = /(\n[\sA-Z])+[\.．、：](.*)/gm;
+                var str = $("#textarea1").val();
+                var obArray = str.split(regex1);
+                result = [];
+                $.each(obArray,function(index1,value1){
+                    if(value1.replace('[.|\n]*')==""){
+
+                    }
+                    else {
+
+                        var str1 = value1;
+                        var question = {};
+                        var answers = [];
+                        while (m = regex3.exec(str1)) {
+                            console.log(m[0]);
+                            console.log(m[1]);
+                            console.log(m[2]);
+                            answers.push({ID: makeStr(5), Name: m[2], ICode: m[1], IsTrue: false});
+                        }
+                        question.answers = answers;
+
+                        var trueAnswers = [];
+                        var obArray2 = str1.split(regex2);
+                        $.each(obArray2, function (index2, value2) {
+                            question.trueAnswers = trueAnswers;
+                            if (index2 == 0) {
+                                question.subjectID = makeStr(5);
+                                question.q_ind_type = qindType;
+                                question.subjectName = value2.replace(/(?:[\(（])([\sA-Z]+)(?:[\)）])/g, "()");
+                                try {
+                                    trueAnswers = value2.match(/(?:[\(（])([\sA-Z]+)(?:[\)）])/g)[0].match(/[A-Z]/g);
+                                }catch(ex){
+                                    alert(value2);
+                                }
+                                $.each(trueAnswers, function (index4, value4) {
+
+                                    question.trueAnswers.push({ICode: value4});
+                                })
+                            }
+                            else {
+                            }
+
+                        });
+                        result.push(question);
+                    }
+
+                });
+
+                $.each(result,function(index1,value1){
+                    if(value1.trueAnswers.length>1){
+                        value1.q_type="02";
+                    }
+                    else if(qType == "03"){
+                        value1.q_type="03";
+                    }
+                    else{
+                        value1.q_type="01";
+                    }
+                    $.each(value1.trueAnswers,function(index2,value2){
+                        $.each(value1.answers,function(index3,value3){
+                            if(value3.ICode.search(value2)!=-1){
+                                value3.IsTrue = true;
+                            }
+                        });
+                    });
+                });
+                var strAll = "";
+                $.each(result,function(index,value){
+                    var str1 = "insert into WE_QA_QUESTION(id,"+
+                    "q_type,"+
+                            "q_content,"+
+                            "q_ind_type,"+
+                            "user_id,"+
+                            "create_date,"+
+                            "score,"+
+                            "parent_id,"+
+                            "disp_no)values("+"'"+value.subjectID+"',"+"'"+value.q_type+"',"+"'"+value.subjectName+"',"+"'"+value.q_ind_type+"',"
+                    +"null,sysdate,"+qScore+",'0000B',null);\n";
+                    strAll+=str1;//test
+                    $.each(value.answers,function(index1,value1){
+                        if(value1.IsTrue == false){
+                            var str2 = "insert into WE_QA_ANSWER_ITEM(id,"+
+                                    "item_content,"+
+                                    "q_id,"+
+                                    "is_true,"+
+                                    "item_source,"+
+                                    "score)values("+"'"+value1.ID+"',"+"'"+value1.Name+"',"+"'"+value.subjectID+"',"+"'"+'0'+"',null,null);\n";
+                            strAll+=str2;
+                        }
+                        else{
+                            var str3 = "insert into WE_QA_ANSWER_ITEM(id,"+
+                                    "item_content,"+
+                                    "q_id,"+
+                                    "is_true,"+
+                                    "item_source,"+
+                                    "score)values("+"'"+value1.ID+"',"+"'"+value1.Name+"',"+"'"+value.subjectID+"',"+"'"+'1'+"',null,null);\n";
+                            strAll+=str3;
+                        }
+
+                    });
+                });
+
+                $("#textarea2").val(strAll);
+
+            })
+
+        });
+
+    </script>
+</head>
+<body>
+    <label>题目类型</label>
+    <select id="q_type">
+        <option value="01">单选</option>
+        <option value="02">多选</option>
+        <option value="03">判断</option>
+        <option value="T1">T1</option>
+        <option value="T2">T2</option>
+        <option value="T3">T3</option>
+        <option value="T4">T4</option>
+        <option value="T5">T5</option>
+        <option value="T6">T6</option>
+        <option value="T7">T7</option>
+        <option value="T8">T8</option>
+        <option value="T9">T9</option>
+        <option value="TA">TA</option>
+        <option value="TB">TB</option>
+        <option value="TC">TC</option>
+
+    </select>
+    <label>题目行业类型</label>
+    <select id="q_ind_type">
+        <option value="06">个人理财</option>
+        <option value="07">道德法规</option>
+
+    </select>
+    <label>每道题分值:</label>
+    <input type="text" id="q_score" />
+    <textarea style="width:100%;height: 300px;" id="textarea1">
+
+    </textarea>
+    <button id="btn1">生成sql</button>
+    <textarea style="width:100%;height: 300px;" id="textarea2">
+
+    </textarea>
+</body>
+</html>
