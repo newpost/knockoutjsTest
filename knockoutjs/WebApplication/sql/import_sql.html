@@ -74,11 +74,15 @@
                 });
 
                 $.each(result,function(index1,value1){
-                    if(value1.trueAnswers.length>1){
-                        value1.q_type="02";
-                    }
-                    else if(qType == "03"){
+
+                    if(qType == "03"){//判断(其实也是单选)
                         value1.q_type="03";
+                    }
+                    else if(qType.indexOf("T")!=-1){//套题
+                        value1.q_type = qType;
+                    }
+                    else if(value1.trueAnswers.length>1){
+                        value1.q_type="02";
                     }
                     else{
                         value1.q_type="01";
@@ -141,18 +145,39 @@
         <option value="01">单选</option>
         <option value="02">多选</option>
         <option value="03">判断</option>
-        <option value="T1">T1</option>
-        <option value="T2">T2</option>
-        <option value="T3">T3</option>
-        <option value="T4">T4</option>
-        <option value="T5">T5</option>
-        <option value="T6">T6</option>
-        <option value="T7">T7</option>
-        <option value="T8">T8</option>
-        <option value="T9">T9</option>
-        <option value="TA">TA</option>
-        <option value="TB">TB</option>
-        <option value="TC">TC</option>
+        <option value="T1_01">T1_01</option>
+        <option value="T1_02">T1_02</option>
+        <option value="T1_03">T1_03</option>
+        <option value="T2_01">T2_01</option>
+        <option value="T2_02">T2_02</option>
+        <option value="T2_03">T2_03</option>
+        <option value="T3_01">T3_01</option>
+        <option value="T3_02">T3_02</option>
+        <option value="T3_03">T3_03</option>
+        <option value="T4_01">T4_01</option>
+        <option value="T4_02">T4_02</option>
+        <option value="T4_03">T4_03</option>
+        <option value="T5_01">T5_01</option>
+        <option value="T5_02">T5_02</option>
+        <option value="T5_03">T5_03</option>
+        <option value="T6_01">T6_01</option>
+        <option value="T6_02">T6_02</option>
+        <option value="T6_03">T6_03</option>
+        <option value="T7_01">T7_01</option>
+        <option value="T7_02">T7_02</option>
+        <option value="T7_03">T7_03</option>
+        <option value="T8_01">T8_01</option>
+        <option value="T8_02">T8_02</option>
+        <option value="T8_03">T8_03</option>
+        <option value="T9_01">T9_01</option>
+        <option value="T9_02">T9_02</option>
+        <option value="T9_03">T9_03</option>
+        <option value="T10_01">T10_01</option>
+        <option value="T10_02">T10_02</option>
+        <option value="T10_03">T10_03</option>
+        <option value="T11_01">T11_01</option>
+        <option value="T11_02">T11_02</option>
+        <option value="T11_03">T11_03</option>
 
     </select>
     <label>题目行业类型</label>
